@@ -21,12 +21,16 @@ export default {
   },
   methods: {
     getEpisodes: async function() {
-      await axios
-        .get('https://rickandmortyapi.com/api/episode')
-        .then(response => (this.episodes = (response.data.results)))
-        .catch(error => {
-          console.log(error)
-        }); 
+      try {
+        const episodesData = await axios.get('https://rickandmortyapi.com/api/episode')
+        if (episodesData.data.results) {
+          this.episodes = episodesData.data.results;
+        } else {
+          align('error')
+        }
+      } catch(error) {
+          align(error)
+      }; 
     }
   },
   mounted() {
