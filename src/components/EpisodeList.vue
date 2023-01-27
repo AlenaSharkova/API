@@ -26,11 +26,11 @@ export default {
         if (episodesData.data.results) {
           this.episodes = episodesData.data.results;
         } else {
-          align('error')
+          alert('error')
         }
-      } catch(error) {
-          align(error)
-      }; 
+      } catch(err) {
+          alert(err)
+      }
     }
   },
   mounted() {
